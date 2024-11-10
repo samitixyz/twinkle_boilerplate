@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Twinkle Design</title>
+    <!-- <link rel="stylesheet" type="text/css" href="./css/style.css" /> -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
@@ -11,6 +12,43 @@
         font-family: "Inter", sans-serif;
       }
     </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            keyframes: {
+              shake: {
+                "10%, 90%": { transform: "translateX(-1px)" },
+                "20%, 80%": { transform: "translateX(2px)" },
+                "30%, 50%, 70%": { transform: "translateX(-4px)" },
+                "40%, 60%": { transform: "translateX(4px)" },
+              },
+              "accordion-down": {
+                from: { height: "0" },
+                to: { height: "var(--radix-accordion-content-height)" },
+              },
+              "accordion-up": {
+                from: { height: "var(--radix-accordion-content-height)" },
+                to: { height: "0" },
+              },
+              "spin-star": {
+                from: { transform: "rotate(0deg)" },
+                to: { transform: "rotate(360deg)" },
+              },
+            },
+            colors: {
+              clifford: "#da373d",
+            },
+            animation: {
+              "shake": "shake 0.5s ease-in-out",
+              "spin-star": "spin-star 20s linear infinite",
+              "accordion-down": "accordion-down 0.2s ease-out",
+              "accordion-up": "accordion-up 0.2s ease-out",
+            },
+          },
+        },
+      };
+    </script>
   </head>
   <body class="bg-gradient-to-br from-[#F8F6FC] to-[#ECEFF4] min-h-screen">
     <!-- Navbar -->
@@ -18,7 +56,7 @@
       <div class="container mx-auto px-6 flex items-center justify-between">
         <div class="text-2xl font-bold flex items-center">
           <div class="w-6 h-6 bg-black rounded-full mr-2"></div>
-          <span>twinkle</span>
+          <span class="">twinkle</span>
         </div>
         <nav class="space-x-6">
           <a href="#" class="text-gray-600 hover:text-black">Course</a>
@@ -36,19 +74,30 @@
     </header>
 
     <!-- Hero Section -->
-     <!-- row > col -->
-    <section class=" overflow-hidden flex flex-row min-h-screen">
-      <div class=" container mx-auto flex relative">
+    <!-- row > col -->
+    <section class="overflow-hidden flex flex-row min-h-screen">
+      <div class="container mx-auto flex relative">
         <div class="max-w-6xl flex flex-col items-start justify-evenly">
           <h1 class="text-8xl font-light leading-tight text-gray-800 mb-6">
             We help our clients develop their<br />
-            <span class="underline decoration-blue-500">career skills</span>.
+            <span class="">career skills</span>.
+            <div
+            style="
+              width: 0;
+              height: 0;
+              background: linear-gradient(to left, #9c9fcc, #9c9fcc, #02007d);
+              clip-path: polygon(0 0, 65% 10%, 0 30%);
+              padding-left: 900px;
+              padding-top: 20px;
+              padding-bottom: 20px;
+            "
+          ></div>
           </h1>
           <div class="max-w-lg relative">
             <img
-            src="/o.png"
-            class="-z-10 w-80 rotate-[81deg] h-80 absolute bottom-0 left-full"
-          />
+              src="/o.png"
+              class="-z-10 w-80 h-80 absolute bottom-0 left-full animate-spin-star"
+            />
             <p class="text-2xl text-gray-600 mb-6">
               Make payments using the banking system without the hassle. "My
               payments are finally bankyfied!"
@@ -69,8 +118,10 @@
           alt="Smiling person"
           class="absolute bottom-0 rounded-lg right-28 h-4/5"
         />
-        <img src="/subtle-01.png" class="absolute right-52 -z-10" />
-
+        <img
+          src="/subtle-01.png"
+          class="absolute right-52 -z-10 animate-bounce"
+        />
       </div>
     </section>
   </body>
